@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolver Probelmas PL</title>
+    <style>
+        body {  
+            font-family: Arial, sans-serif;
+            background-color: withe;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px;
+        }
+        h1 {
+            color: blue;
+        }
+        form {
+            background-color: rgb(40, 200, 200);
+            padding: 100px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color:rgb(10, 180, 120);
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color:rgb(10, 180, 120);;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #3a3a4f;
+            padding: 5px;
+            margin: 2px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resolver Probelmas PL</h1>
+    <form method="POST">
+        <label>Estado Inicial:</label>
+        <input type="text" name="estado_inicial">
+        <br>
+        <label>Estado Final:</label>
+        <input type="text" name="solucion">
+        <br>
+        <button type="submit">Resultado</button>
+    </form>
+
+    {% if resultados %}
+        <h2>Resultados:</h2>
+        <ul>
+            {% for metodo, resultado in resultados.items() %}
+                <li>
+                    <strong>{{ metodo }}:</strong>
+                    {% if resultado[0] == "No se encontró solución." %}
+                        <p> {{ resultado[0] }}</p>
+                    {% else %}
+                        <p> {{ resultado }}</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
